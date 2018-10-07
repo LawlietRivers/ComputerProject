@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+public class Hexad
+{
+    String s="",r="",hex="ABCDEF";
+    public void convert(int n)
+    {
+        if(n>0)
+        {
+            int a = n%16;/*remainder formed*/
+            int b = n/16;/*quotient obtained*/
+            r = r+(a>=10?hex.charAt(a-10):Integer.toString(a));/*if a is >=10 appropriate hexa character is used*/
+            convert(b);/*recursion*/
+        }
+        else
+        {
+            for(int i = r.length()-1;i>=0;i--)
+            s=s+r.substring(i,i+1);/*string reversed to obtain hexadecimal no.*/
+            System.out.println("HEXADECIMAL: " + s);
+        }
+    }
+public static void main(String args[])
+{
+    Scanner in = new Scanner(System.in);
+    System.out.println("ENTER DECIMAL SYSTEM INTEGER: ");
+    int x = in.nextInt();
+    new Hexad().convert(x);
+}
+}
