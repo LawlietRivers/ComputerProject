@@ -1,0 +1,44 @@
+import java.util.*;
+public class Evilnum
+{
+    String s ="",b="";int i = 1;
+  public void binaconv(int n)
+  {
+   {
+      if(n>0)
+      {
+          s=s+n%2;/*extracting individual digits*/
+          binaconv(n/2);/*recursion*/
+        }
+        else if(b.length()<s.length())
+        {
+            b=b+s.charAt(s.length()-i);/*reversal of binary string*/
+            i++;
+            binaconv(n);
+        }
+        else
+        checkEvil(b);
+    }
+}
+public void checkEvil(String s)
+{
+    int t=0;
+    for(int i = 0;i<s.length();i++)
+    {
+        if(s.charAt(i)=='1')
+        t++;
+    }
+    if(t>0&&t%2==0)
+    System.out.println("EVIL NUMBER.");
+    else
+    System.out.println("NOT EVIL NUMBER.");
+}
+public static void main(String args[])
+{
+    Scanner in = new Scanner(System.in);
+    System.out.println("ENTER POSITIVE INTEGER: ");
+    int n = in.nextInt();/*number accepted for checking*/
+    new Evilnum().binaconv(n);
+}
+}
+    
