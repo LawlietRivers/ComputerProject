@@ -1,0 +1,91 @@
+import java.io.*;
+import java.util.*;
+public class Arraything
+{
+    int arr[][];
+    public void accept()
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER DIMENSIONS OF ARRAY. IT MUST BE A SQUARE MATRIX: ");
+        int n = in.nextInt();//dimensions accepted
+        arr=new int[n][n];//array instantiated
+        for(int i =0;i<n;i++)
+        {
+            for(int j = 0;j<n;j++)
+            {
+                System.out.println("ENTER AN INTEGER: ");
+                arr[i][j]=in.nextInt();//array getting filled
+            }
+        }
+    }
+    public void saddlepoints()
+    {
+        int t=0,ind=0;
+        for(int i=0;i<arr.length;i++)
+        {t=arr[i][0];
+            int flag=1;
+            for(int j =1;j<arr.length;j++)
+            {
+                if(arr[i][j]<t)
+                {
+                    t=arr[i][j];
+                    ind=j;
+                }
+            }
+            for(int k =0;k<arr.length;k++)
+            {
+                if(arr[k][ind]>t)
+                {
+                    flag=0;
+                    break;
+                }
+            }
+            if(flag==1)
+            System.out.println("SADDLE POINT" + t);
+        }
+    }
+    public void sort()
+    {
+        System.out.println("ORIGINALLY: ");
+        for(int i =0;i<arr.length;i++)
+        {
+            for(int j =0;j<arr.length;j++)
+            {
+                System.out.print(arr[i][j]+"\t");
+            }
+            System.out.println();
+        }
+        for(int i =0;i<arr.length-1;i++)
+        {
+            for(int j=0;j<arr.length-i-1;j++)
+            {
+                if(arr[j][j]>arr[j+1][j+1])
+                {
+                    int t=arr[j+1][j+1];
+                    arr[j+1][j+1]=arr[j][j];
+                    arr[j][j]=t;
+                }
+            }
+        }
+        System.out.println("AFTER SORTING PRINCIPAL DIAGONAL: ");
+        for(int i =0;i<arr.length;i++)
+        {
+            for(int j =0;j<arr.length;j++)
+            {
+                System.out.print(arr[i][j]+"\t");
+            }
+            System.out.println();
+        }
+    }
+    public static void main(String args[])
+    {
+        Arraything ar=new Arraything();
+        ar.accept();
+        ar.saddlepoints();
+        ar.sort();
+    }
+}
+        
+                
+                   
+                
