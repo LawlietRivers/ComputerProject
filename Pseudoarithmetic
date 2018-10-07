@@ -1,0 +1,48 @@
+import java.io.*;
+import java.util.*;
+public class Pseudoarithmetic
+{
+    int n; int arr[];
+    public void accept()
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER LENGTH OF SERIES: ");
+        n = in.nextInt();
+        arr = new int[n];/*array instantiated*/
+        for(int i=0;i<n;i++)
+        {
+            System.out.println("ENTER INTEGER NO." + (i+1)+":");
+            arr[i] = in.nextInt();/*array initialized*/
+        }
+    }
+    public void check()
+    {
+        boolean flag = true;/*status variable*/
+        int ans = arr[0]+arr[n-1];/*stores sum of first and last elements for checking*/
+        int sum = ans;/*stores sum of series*/
+        for(int i=1;i<n-1;i++)
+        {
+            if(arr[i]+arr[n-i-1]!=ans)/*checking corresponding sums*/
+            flag=false;/*status variable's value changes*/
+            sum=sum + arr[i];
+        }
+        if(n%2!=0)
+        sum=sum+arr[n/2];/*for odd sequences, middle element is added twice*/
+        if(flag==true)
+        System.out.println("IT IS A PSEUDO ARITHMETIC SEQUENCE.");
+        else 
+        System.out.println("IT IS NOT A PSEUDO ARITHMETIC SEQUENCE.");
+        System.out.println("SUM OF THE SERIES IS: " + sum);
+    }
+    public static void main(String args[])
+    {
+        Pseudoarithmetic p1 = new Pseudoarithmetic();/*object created*/
+        p1.accept();
+        p1.check();
+    }
+}
+
+                  
+            
+    
+ 
