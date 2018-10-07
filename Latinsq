@@ -1,0 +1,55 @@
+import java.io.*;
+import java.util.*;
+public class Latinsq
+{
+    int arr[][];
+    public void accept()
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER THE DIMENSION OF THE SQUARE:");
+        int n = in.nextInt();
+        arr=new int[n][n];
+        for(int i =0;i<n;i++)//nested loop to accept elements
+        for(int j = 0;j<n;j++)
+        {
+         System.out.println("ENTER INTEGER AT "+ "("+i+","+j+"):");
+         arr[i][j]=in.nextInt();
+        }
+        System.out.println("YOUR ENTERED ARRAY: ");
+        for(int i =0;i<n;i++)
+        for(int j = 0;j<n;j++)
+        System.out.print((j==n-1)?(arr[i][j]+"\n"):arr[i][j]+"\t");//displays array by attaching new line at end of each row
+    }
+public void checker()
+{
+    int s1=0,s2=0,s=0,i;/*s1 stores sum of elements of specific row,
+    s2 stores sum of elements of specific column, 
+    s checks them for their equality.
+    It will be latin square if every row and column has unique elements so their sums must be equal*/
+for(i =0;i<arr.length;i++)
+{
+    for(int j = 0;j<arr.length;j++)
+    {
+    s1+=arr[i][j];
+    s2+=arr[j][i];
+}
+if((s==s1&&s==s2)||i==0&&s1==s2){
+    //In first iteration s will be 0 so the second condition
+s=s1;
+s1=0;s2=0;}
+else
+break;
+}
+if(i==arr.length)//this checks if the loop has terminated prematurely
+System.out.println("LATIN SQUARE");
+else
+System.out.println("NOT LATIN SQUARE");
+}
+public static void main(String args[])
+{
+    Latinsq l1 =new Latinsq();
+    l1.accept();
+    l1.checker();
+}
+}
+
