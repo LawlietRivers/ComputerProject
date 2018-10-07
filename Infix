@@ -1,0 +1,48 @@
+import java.io.*;
+import java.util.*;
+public class Infix
+{
+    String arr[]; int top,n;String p,in;/*arr acts as stack*/
+    public void accept()
+    {
+        Scanner x = new Scanner(System.in);
+        System.out.println("ENTER POSTFIX STRING: ");
+        p = x.nextLine();
+        arr=new String[p.length()];/*max no. of elements to store*/
+        in=p.substring(0,1);/*infix initialized with first operand for proper output*/
+        top=-1;
+        n=p.length();
+        convert();/*convert() method called*/
+    }
+    public void push(String s)
+    {
+        if(top+1<arr.length)
+        arr[++top]=s;/*element pushed into stack*/
+    }
+    public String pop()
+    {
+        if(top==-1)
+        return "";/*default return*/
+        else 
+        return arr[top--];/*element popped and returned*/
+    }
+    public void convert()
+   {
+       String op="/*+-^";/*stores operators*/
+       for(int i = 1;i<p.length();i++)/*p is scanned*/
+       {
+           if(op.indexOf(p.charAt(i))==-1)/*checks if it's operand*/
+           push(p.substring(i,i+1));
+           else{
+           in=in+p.substring(i,i+1)+pop();/*one operand popped from stack to form infix*/
+           
+        }
+    }
+    System.out.println("IN INFIX: " + in);
+}
+public static void main(String args[])
+{
+    new Infix().accept();
+}
+}
+    
