@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+public class Manualsine
+{
+    int i = 1;double sine = 0;/*stores value of sinx*/
+    public void calculate(double x)
+    {
+        if(i<=10)/*limit for calculation*/
+        {
+           sine+=Math.pow(-1,i+1)*Math.pow(x, 2*i-1)/fact(2*i-1);/*series expansion sum*/
+            i++;
+            calculate(x);/*recursion*/
+        }
+        else
+        System.out.println("VALUE OF SINE OF GIVEN ANGLE = " + sine);
+    }
+    public double fact(double n)
+    {
+        return (n==1?1:n*fact(n-1));/*recursion*/
+    }
+    public static void main(String args[])
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER ANGLE IN RADIANS: ");
+        double a = in.nextDouble();
+        new Manualsine().calculate(a);/*required function is called*/
+    }
+}
