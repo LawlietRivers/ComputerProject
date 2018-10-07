@@ -1,0 +1,48 @@
+import java.io.*;
+import java.util.*;
+public class Derangement
+{
+    double n,i=1,s=1,f=1;
+    public void accept()
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER VALUE OF n: ");/*value of 'n' items accepted*/
+        n = in.nextInt();
+    }
+    public void calc()
+    {
+        if(i<=n)
+        {
+            s+=Math.pow(-1,i)/new Derangement().fact(i);/*factorial calculated using anonymous object*/
+            i++;
+            calc();/*recursion*/
+        }
+        else
+        s*=new Derangement().fact(n);/*final calculation for derangement*/
+               
+    }
+    public double fact(double x)/*recursive calculation of factorial*/
+    {
+        if(x>0)
+        {
+            f*=x;
+            x--;
+            return fact(x);
+        }
+        else
+        return f;
+    }
+    public void show()
+    {
+     System.out.println("NUMBER OF POSSIBLE DERANGEMENTS: " + Math.floor(s));/*display*/
+    }
+    public static void main(String args[])
+    {
+        Derangement d = new Derangement();
+        d.accept();
+        d.calc();
+        d.show();
+    }
+}
+
+
