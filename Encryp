@@ -1,0 +1,70 @@
+import java.io.*;
+import java.util.*;
+public class Encryp
+{
+    String arr[];int n;
+    public void accept()
+    {
+     Scanner in = new Scanner(System.in);
+     Scanner j = new Scanner(System.in);
+    do{
+      System.out.println("ENTER SIZE OF STRING ARRAY. MAXIMUM SIZE: 10");
+      n = in.nextInt();
+    }while(n<1||n>10);/*to prevent exceeding limit*/
+    arr = new String[n];
+    for(int i =0;i<n;i++)
+    {
+        System.out.println("ENTER SENTENCE "+(i+1)+":");
+      arr[i]=j.nextLine();/*accepting sentences to encrypt*/
+      arr[i]=arr[i].substring(0,arr[i].length()-1);/*removing "."*/
+    }
+    encrypt();
+}
+public void encrypt()
+{
+    for(int i =0;i<n;i++)
+    {
+        if((i+1)%2!=0)/*for odd index*/
+        {
+            String temp="";
+            for(int j=0;j<arr[i].length();j++)
+            if(Character.isLetter(arr[i].charAt(j)))/*to only apply encryption to letters*/
+            temp = temp + (char)(arr[i].charAt(j)+2);/*each character shifted 2 places*/
+            arr[i]=temp;    
+         }
+        else
+        {
+            arr[i]=reverse(arr[i]);
+        }
+    }
+    display();
+}
+public String reverse(String s)
+{
+    String fin="";
+    int t=0;/*stores number of spaces*/
+    for(int i=0;i<s.length();i++)
+    {
+        if(s.charAt(i)==' ')
+        t++;
+    }
+    String stor[]=new String[t+1];/*to store each word*/
+    Scanner sc = new Scanner(s);
+    for(int i =0;i<stor.length;i++)
+    stor[i]=sc.next();/*string split up into words*/
+    for(int j=stor.length-1;j>=0;j--)
+    fin=fin+stor[j]+" ";/*words stored in reverse*/
+    return fin;
+}
+public void display()
+{
+    System.out.println("POST ENCRYPTION: ");
+    for(int i = 0;i<n;i++)
+    System.out.println(arr[i]+".");/*adding "."*/
+}
+public static void main(String args[])
+{
+    new Encryp().accept();
+}
+}
+      
