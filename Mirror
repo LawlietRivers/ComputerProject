@@ -1,0 +1,64 @@
+import java.io.*;
+import java.util.*;
+public class Mirror
+{
+    int m,n;int arr[][],mirr[][];
+    public void input()
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER DIMENSIONS OF MATRIX: ");
+        m = in.nextInt();
+        n = in.nextInt();
+        arr=new int[m][n];//original and mirror matrices  
+        mirr=new int[m][n];//get instantiated 
+        for(int i=0;i<m;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                System.out.println("ENTER INTEGER IN ARRAY: ");
+                arr[i][j]=in.nextInt();/*matrix getting initialised*/
+            }
+        }
+    }
+    public void reflect()
+    {
+        for(int i =0;i<m;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                mirr[i][j]=arr[i][n-1-j];/*reflection of cells takes place*/
+            }
+        }
+    }
+    public void display()
+    {
+        System.out.println("ORIGINAL MATRIX: ");
+        for(int i =0;i<m;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                System.out.print(arr[i][j]);/*original matrix displayed*/
+            }
+            System.out.println();
+        }
+        System.out.println("MIRROR MATRIX: ");
+        for(int i =0;i<m;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                System.out.print(mirr[i][j]);/*mirror matrix displayed*/
+            }
+            System.out.println();
+        }
+    }
+    public static void main(String args[])
+    {
+        Mirror m1=new Mirror();/*object created*/
+        m1.input();
+        m1.reflect();
+        m1.display();
+    }
+}
+        
+        
+        
