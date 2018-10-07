@@ -1,0 +1,31 @@
+import java.util.*;
+public class Squareroot
+{
+double t,sqrt,num; 
+public void squareroot()
+{
+    if(t!=sqrt)
+    {
+        t=sqrt;
+        sqrt = (t + (num/t))/2;/*using mathematical series of squareroot*/
+        squareroot();/*recursive call*/
+    
+}
+else
+System.out.println(sqrt);
+}
+public void accept()
+{
+    Scanner in = new Scanner(System.in);
+    System.out.println("ENTER NUMBER: ");
+    num = in.nextInt();
+    t=num;
+    sqrt=num/2;/*initialization for calculation*/
+    System.out.print("SQUARE ROOT: " );
+    squareroot();
+}
+public static void main(String args[])
+{
+    new Squareroot().accept();
+}
+}
