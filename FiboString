@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.*;
+public class FiboString
+{
+ String x,y,z;
+ int n;/*stores number of terms*/
+public FiboString()
+{
+ x="a";/*first member of series*/
+y="b";/*second member*/
+z="ba";/*third and subsequent members*/
+}
+public void accept()
+{
+    Scanner in = new Scanner(System.in);
+    System.out.println("ENTER NO. OF TERMS: ");
+    n = in.nextInt();
+}
+public void generate()
+{
+    int i = 3;/*first 3 terms printed separately*/
+    System.out.print(x+" , "+y);
+    while(i<=n)
+    {
+        System.out.print(" , "+z);
+        x=y;
+        y=z;
+        z=y+x;/*subsequent members generated*/
+        i++;
+    }
+}
+public static void main(String args[])
+{
+    FiboString f1 = new FiboString();
+    f1.accept();
+    f1.generate();
+    System.out.println();
+}
+}
