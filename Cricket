@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+public class Cricket
+{
+    public void runcalc(String o)/*accepts over*/
+    {
+        int st = 0;/*will be used to switch between batsmen*/
+        int p1=0,p2=0,ext=0;
+        for(int i = 0;i<o.length();i++)
+        {
+            if(Character.isDigit(o.charAt(i)))/*checks for runs*/
+            {
+             int r = Integer.parseInt(o.substring(i,i+1));
+             if(st%2==0)/*player 1 on strike*/
+             {
+                 p1+=r;
+                 if(r%2!=0)
+                 st++;/*odd runs indicates strike change*/
+             }
+             else
+             {
+                 p2+=r;
+                 if(r%2!=0)
+                 st++;
+             }
+            }
+            else if(o.charAt(i)!='.')/*as long as it is not dot ball*/
+            ext++;
+        }
+        System.out.println("BATSMAN 1: " + p1 + " RUNS\n1BATSMAN 2: " + p2 + " RUNS\nEXTRAS: " + ext);
+    }
+    public static void main(String args[])
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER OVER: ");
+        String ov = in.nextLine();
+        new Cricket().runcalc(ov);
+    }
+}
+
+   
+                 
+   
