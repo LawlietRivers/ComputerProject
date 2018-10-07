@@ -1,0 +1,46 @@
+import java.io.*;
+import java.util.*;
+public class Sumdig
+{
+    int m,n;
+    public void input()
+    {
+        Scanner in = new Scanner(System.in);
+    do{
+        System.out.println("ENTER VALUE OF M: ");
+        m = in.nextInt();
+    }while(m<100||m>10000);/*to ensure m is within given limits*/
+        System.out.println("ENTER VALUE OF N: ");
+        n = in.nextInt();
+        check();/*checking started*/
+    }
+    public void check()
+    {
+        for(int i=m;i<=10000;i++)
+        {
+            if(digsum(i)==n)/*if sum of digits equals n*/
+            {
+                System.out.println("THE REQUIRED NUMBER = " + i);
+                break;
+            }
+        }
+    }
+    public int digsum(int n)
+    {
+        int s =0;/*stores sum of digits*/
+        while(n>0)
+        {
+            int d = n%10;/*digit extracted*/
+            s+=d;
+            n/=10;
+        }
+        return s;/*sum of digits returned*/
+    }
+    public static void main(String args[])
+    {
+       new Sumdig().input();/*anonymous object created*/
+    }
+}
+             
+        
+        
