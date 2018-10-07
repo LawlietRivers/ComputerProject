@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+public class Directions
+{
+    public void finder(String x)
+    {
+        int a=0,b=0,s;
+        for(int i = 0;i<x.length();i++)/*scanning string*/
+        {
+            char c = x.charAt(i);
+            switch(c)
+            {
+                /*north,south and east, west are perpendicular to each other and so require separate tracking
+                 * but north and south are opposite, so moving 1 unit north and 1 unit south means returning to same point
+                 * same happens for east and west.
+                 * Hence this logic is used
+                 */
+                case 'N':
+                a++;
+                break;
+                case 'S':
+                a--;
+                break;
+                case 'E':
+                b++;
+                break;
+                case 'W':
+                b--;
+                break;
+            }
+        }
+        s = (int)Math.sqrt(Math.pow(Math.abs(a),2)+Math.pow(Math.abs(b),2));/*finding total distance using Pythagoras theorem*/
+        System.out.println("DISTANCE FROM INITIAL POINT: " + s+" MILES");
+    }
+    public static void main(String args[])
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER DIRECTIONS STRING: ");
+        String s = in.nextLine();
+        new Directions().finder(s);
+    }
+}
+    
