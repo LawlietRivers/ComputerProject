@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+class Plane/*superclass*/
+{
+int x1, y1;/*coordinates*/
+public Plane(int nx, int ny)
+{
+x1=nx;/*initialization of coordinates*/
+y1=ny;
+}
+void Show()
+{
+System.out.println("X-COORDINATE: " + x1);
+System.out.println("Y-COORDINATE: " + y1);
+}
+}
+
+public class Circle extends Plane
+{
+int x2,y2;
+double radius,area;
+public Circle(int nnx, int nny,int a,int b){
+super(a, b);/*superclass's parameters passed to it*/
+/*initialization of second point's coordinates*/
+x2=nnx; 
+y2=nny;
+}
+public void findRadius()
+{
+radius = Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2))/2;/*using distance formula*/
+}
+public void findArea()
+{
+area=3.14*radius*radius;/*using area = pi*(radius)^2*/
+}
+public void Show()
+{/*display from both classes*/
+super.Show();
+System.out.println("RADIUS: " + radius + "units");
+System.out.println("AREA: " + area + "sq. units");
+}
+public static void main(String args[])
+{/*example method calls*/
+    Circle c1 = new Circle(5,8,7,9);
+    c1.findRadius();
+    c1.findArea();
+    c1.Show();
+}
+}
