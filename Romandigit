@@ -1,0 +1,40 @@
+import java.io.*;
+import java.util.*;
+class Romandigit
+{
+public void accept()
+{
+Scanner in = new Scanner(System.in);
+System.out.println("ENTER THE NUMBER: ");
+int num=in.nextInt(); //accepting decimal number
+roman(num);
+}
+public void roman(int num)
+{
+if(num>0 && num<4000) //checking whether the number entered is within the range [1-3999]
+{
+
+/*Saving the Roman equivalent of the thousand, hundred, ten and units place of a decimal number*/
+String thou[]={"","M","MM","MMM"};
+String hund[]={"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"};
+String ten[]={"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"};
+String unit[]={"","I","II","III","IV","V","VI","VII","VIII","IX"};
+
+/*Finding the digits in the thousand, hundred, ten and units place*/
+int th=num/1000;
+int h=(num/100)%10;
+int t=(num/10)%10;
+int u=num%10;
+
+/*Displaying equivalent roman number*/
+System.out.println("IN ROMAN DIGITS: "+thou[th]+hund[h]+ten[t]+unit[u]);
+}
+/*Displaying an error message if the number entered is out of range*/
+else
+System.out.println("YOU ENTERED A NUMBER BEYOND RANGE. PLEASE ENTER IN RANGE 1-3999.");
+}
+public static void main(String args[])
+{
+    new Romandigit().accept();/*anonymous object to call method*/
+}
+}
