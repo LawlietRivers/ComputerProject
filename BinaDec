@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+public class BinaDec
+{
+    String s ="",b="";int i = 1;
+    public void convert(int n)
+  {
+      if(n>0)
+      {
+          s=s+n%2;/*extracting individual digits*/
+          convert(n/2);/*recursion*/
+        }
+        else if(b.length()<s.length())
+        {
+            b=b+s.charAt(s.length()-i);/*reversal of binary string*/
+            i++;
+            convert(n);
+        }
+        else
+        System.out.println("THE NUMBER IN BINARY FORM: " + b);
+    }
+    public static void main(String args[])
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER NUMBER TO BE CONVERTED: ");
+        int x = in.nextInt();
+        new BinaDec().convert(x);
+    }
+}
