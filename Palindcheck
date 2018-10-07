@@ -1,0 +1,44 @@
+import java.io.*;
+import java.util.*;
+public class Palindcheck
+{
+    String s;/*stores user input*/
+    public void accept()
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER A STRING OF WORDS: ");
+        s=in.nextLine();
+        s=s+" ";/*for help in splitting*/
+        checker();/*checking method called*/
+    }
+    public void checker()
+    {
+        int t = 0;
+        for(int i=0;i<s.length();i++)
+        {
+            if(s.charAt(i)==' ')/*checking for spaces*/
+            {
+                String word = s.substring(t,i);/*word extracted*/
+                if(palindrome(word)==true)/*checking if palindrome*/
+                System.out.print(word + " ; ");/*palindrome words displayed*/
+                t=i+1;/*beginning pointer shifted*/
+            }
+        }
+    }
+    public boolean palindrome(String x)
+    {
+        String temp="";/*stores reversed string*/
+        for(int i = x.length()-1;i>=0;i--)
+        temp = temp + x.charAt(i);/*reversing of string*/
+        
+        if(temp.equals(x))/*checking if palindrome*/
+        return true;
+        else
+        return false;
+    }
+    public static void main(String args[])
+    {
+        new Palindcheck().accept();/*function call using anonymous object*/
+    }
+}
+           
