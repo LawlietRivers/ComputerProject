@@ -1,0 +1,48 @@
+import java.io.*;
+import java.util.*;
+public class Matsymmetry
+{
+    int m,n;int arr[][];/* m stores number of rows, n stores number of columns*/
+    public void accept()
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER DIMENSIONS OF THE MATRIX: ");
+        m = in.nextInt();//dimensions
+        n = in.nextInt();//accepted
+        arr = new int[m][n];/*array instantiated*/
+        for(int i=0;i<m;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                System.out.println("ENTER INTEGER FOR ("+i+","+j+"): ");
+                arr[i][j]=in.nextInt();/*matrix initialized*/
+            }
+        }
+        check();
+    }
+    
+    public void check()
+    {
+        boolean flag = true;/*status variable*/
+        for(int i=0;i<m;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                if(arr[i][j]!=arr[j][i])/*condition for symmetricity checked*/
+                {
+                    flag=false;/*status variable turns false*/
+                    break;
+                }
+            }
+        }
+        if(flag==true)
+        System.out.println("MATRIX IS SYMMETRIC.");
+        else
+        System.out.println("MATRIX IS NOT SYMMETRIC.");
+    }
+    public static void main(String args[])
+    {
+        new Matsymmetry().accept();/*anonymous object used to call method*/
+    }
+}
+
