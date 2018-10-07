@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+public class Changer
+{
+    String s = "";int i = 1;
+    public void change(String p, String q)
+    {
+        if(s.equals(q)==false)
+        {
+            s=q.substring(0,i)+p.substring(i);/*one letter of p replaced with that of q*/
+            System.out.println("Step "+i + " : " + s);/*step is displayed*/
+            i++;/*i is incremented to exchange next letter*/
+            change(p,q);/*recursion*/
+            
+        }
+        
+    }
+    public static void main(String args[])
+    {
+        String a,b;
+        Scanner in = new Scanner(System.in);
+        do{
+        System.out.println("ENTER 2 STRINGS OF EQUAL LENGTHS: ");
+        a=in.nextLine();
+        b=in.nextLine();
+    }while(a.length()!=b.length());/*ensures strings are of equal lengths*/
+    new Changer().change(a,b);
+}
+}
