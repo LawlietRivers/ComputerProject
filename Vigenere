@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+public class Vigenere {
+    String res=""; int t =0;
+    public String encrypt(String pt, String key) {
+        for (int i = 0; i < key.length(); i++) {
+            if (t == pt.length())
+                break;
+            else if(Character.isLetter(pt.charAt(t)))
+              res = res + ((key.charAt(i) - 'A' + pt.charAt(t) > 90) ? ((char) (key.charAt(i) - 'A' + pt.charAt(t) - 26)) :(char) (key.charAt(i) - 'A' + pt.charAt(t)));
+            /*in earlier line vigenere is implemented by using corresponding cipher beginning with keyword letter*/
+              else
+                i--;
+            t++;
+        }
+
+        if (t < pt.length())
+            return encrypt(pt,key);/*recursion for remaining encrpytion*/
+        else
+        return res;/*final string displayed*/
+    }
+    public static void main(String args[])
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER PLAINTEXT: ");
+        String input = in.nextLine();
+        System.out.println("ENTER KEY: ");
+        String key = in.nextLine();
+        System.out.println("CIPHERTEXT: " + new Vigenere().encrypt(input,key));/*ciphertext is displayed*/
+    }
+}
