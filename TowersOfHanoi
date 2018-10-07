@@ -1,0 +1,22 @@
+//Program to implement Towers of Hanoi problem showing the shiftings necessary
+import java.util.*;
+public class TowersOfHanoi {
+
+   public void solve(int n, String start, String auxiliary, String end) {
+       if (n == 1) {
+           System.out.println(start + " -> " + end);//Just one shift needed
+       } else {
+           solve(n - 1, start, end, auxiliary);//recursive shift from start to auxiliary
+           System.out.println(start + " -> " + end);
+           solve(n - 1, auxiliary, start, end);//second recursive shift from auxiliary to end
+       }
+   }
+
+   public static void main(String[] args) {
+       TowersOfHanoi towersOfHanoi = new TowersOfHanoi();
+       System.out.print("Enter number of discs: ");//accepting number of discs
+       Scanner scanner = new Scanner(System.in);
+       int discs = scanner.nextInt();
+       towersOfHanoi.solve(discs, "A", "B", "C");//towers named A,B,C
+   }
+}
