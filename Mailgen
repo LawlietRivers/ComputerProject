@@ -1,0 +1,71 @@
+import java.io.*;
+import java.util.*;
+public class Mailgen
+{
+    String db;int t= 0;
+    public void accept()
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER NAME: ");//Accepting name
+        String fn = in.next().toLowerCase();
+        String ln = in.next().toLowerCase();
+        in.nextLine();
+        System.out.println("ENTER DATE OF BIRTH IN FORMAT DD/MM/YYYY: ");
+        db = in.nextLine();//Date of birth accepted
+        maingen(fn,ln);
+        maingen(ln,fn);
+    }
+    public void maingen(String a, String b)
+    {
+        for(int i = 3;i<=a.length()+1;i+=2)
+        {
+         for(int j = 3;j<=b.length()+1;j+=2)
+         addcon(((i<=a.length())?a.substring(0,i):a),((j<=b.length())?b.substring(0,j):b));
+         /*combinations of letters of first name and surname created*/
+        }
+    }
+    public void addcon(String x, String y)
+    {
+        String con[]={"","."};
+        for(int i = 0;i<con.length;i++)
+        dbadd(x+con[i]+y);/*separator combinations added*/
+    }
+    public void dbadd(String s)
+    {   String dob[];
+        if(db.equals(""))
+        dob = db.concat("//1/123/1234").split("/");
+        else
+        dob = db.concat("//1/123/1234/").concat(db.substring(0,2)+db.substring(3,5)+"/"+db.substring(8)).split("/");
+        for(int i = 0;i<dob.length;i++)
+        {//dates of birth have been added earlier
+          suffadd(s.concat(dob[i]));
+          
+        }
+    }
+    public void suffadd(String s)
+    {//suffixes added
+      String suff[]={"","sinbox","smail","mail","inbox"};
+      for(int i = 0;i<suff.length;i++)
+      
+       maileradd(s.concat(suff[i]));
+    }
+    public void maileradd(String s)
+    {//domain added
+        String mail[]={"@gmail.com","@hotmail.com","@live.in","@yahoo.co.in"};
+        for(int i = 0;i<mail.length;i++)
+        {
+            System.out.println(s+mail[i]);//display
+            t++;//counts total mail ids generated
+        }
+         
+        }
+        public static void main()
+        {
+           Mailgen x =  new Mailgen();
+           x.accept();
+           System.out.println("TOTAL EMAIL IDS GENERATED: " + x.t);
+        }
+    }
+        
+        
+   
