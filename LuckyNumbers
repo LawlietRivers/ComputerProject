@@ -1,0 +1,41 @@
+import java.io.*;
+import java.util.*;
+class LuckyNumbers
+{
+public static void main(String args[])
+{
+Scanner in =new Scanner(System.in);
+System.out.print("ENTER LIMIT: ");
+int n=in.nextInt();
+new LuckyNumbers().finder(n);
+}
+public void finder(int n)
+{
+int a[]=new int[n];/*stores lucky numbers*/
+int c=n;/*copy of limit*/
+for(int i=0;i<n;i++)
+{ 
+a[i]=i+1;/*natural number sequence filled*/
+}
+int del=1;
+ 
+while(del<n)
+{
+for(int i=del; i<n; i+=del)/*deletion started*/
+{
+for(int j=i; j<n-1; j++)
+{
+a[j]=a[j+1];/*other elements shifted to replace deleted ones*/
+}
+n--;
+}
+del++;/*for next deletion*/
+
+} //end of while
+ System.out.println("Hence, the Lucky Numbers Less than "+c+" are : ");
+for(int i=0; i<n; i++)
+{
+System.out.print(a[i]+"   ");/*lucky numbers printed*/
+}
+}
+}
