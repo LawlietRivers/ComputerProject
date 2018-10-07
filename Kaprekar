@@ -1,0 +1,23 @@
+import java.io.*;
+import java.util.*;
+public class Kaprekar
+{
+    public void finder(int n)
+    {
+        int sq= (int)Math.pow(n,2);//number is squared
+        String s = Integer.toString(sq);//it is converted to String for easier breaking
+        int n1=Integer.parseInt(s.substring(0,2));//first 2 digits extracted
+        int n2=Integer.parseInt(s.substring(2));//rest of number extracted
+        if(n1+n2==n)
+        System.out.println("KAPREKAR NUMBER.");
+        else
+        System.out.println("NOT KAPREKAR NUMBER.");
+    }
+    public static void main(String args[])
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER THE NUMBER: ");
+        int x = in.nextInt();//number accepted
+        new Kaprekar().finder(x);//anonymous object created and method called
+    }
+}
