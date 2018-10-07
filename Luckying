@@ -1,0 +1,44 @@
+import java.io.*;
+import java.util.*;
+public class Luckying
+{
+    int arr[];
+    public void accept()
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER NUMBER: ");
+        int n = in.nextInt();
+        arr=new int[n];
+        for(int i = 1;i<=n;i++)
+        {
+            arr[i-1]=i;
+        }
+        cutting(1);
+    }
+    public void cutting(int x)
+    {
+        while(x<arr.length)
+        {
+        for(int i =x;i<arr.length;i+=x+1)
+        {
+            arr[i]=-1;
+        }
+        x++;
+        
+    }
+        display();
+}
+public void display()
+{
+    for(int i = 0;i<arr.length;i++)
+    {
+        if(arr[i]>0)
+        System.out.println(arr[i]+";");
+    }
+}
+}
+       
+            
+            
+     
+    
