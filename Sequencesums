@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+public class Sequencesums
+{
+    public void printer(int n)
+    {
+        for(int i =1;i<=n/2+1;i++)//outer loop to start the sequence
+        {
+            int s=i;String p=Integer.toString(i);//string stores the sequence, s stores sum
+            for(int j =i+1;j<=n/2+1;j++)//inner loop continues sequence
+            {
+                s+=j;
+                p=p+ " + " + Integer.toString(j);
+                if(s>=n)//once the number is reached or crossed, we break the sequence
+                break;
+            }
+            if(s==n)
+            System.out.println(p+" = "+n);//if sequence is correct, it is printed
+        }
+    }
+    public static void main(String args[])
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER THE NUMBER: ");//number accepted
+        int x=in.nextInt();
+        new Sequencesums().printer(x);//anonymous object created and method called
+    }
+}
