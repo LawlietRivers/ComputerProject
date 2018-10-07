@@ -1,0 +1,33 @@
+import java.util.*;
+public class Denom
+{
+    int a;
+    public void accept()
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("ENTER AMOUNT: ");
+        a=in.nextInt();
+        divide();
+    }
+    public void divide()
+    {
+        System.out.println("NO. OF RS. 2000 NOTES REQUIRED: " + a/2000);//in the following steps
+        a%=2000;
+        System.out.println("NO. OF RS. 500 NOTES REQUIRED: " + a/500);//no. of notes required
+        a%=500;
+        System.out.println("NO. OF RS. 100 NOTES REQUIRED: " + a/100);//is shown
+        a%=100;
+        System.out.println("NO. OF RS. 50 NOTES REQUIRED: " + a/50);//and corresponding amount
+        a%=50;
+        System.out.println("NO. OF RS. 10 NOTES REQUIRED: " + a/10);//is subtracted for next step
+        a%=10;
+        System.out.println("AMOUNT REQUIRED IN CHANGE: RS." + a);
+    }
+    public static void main(String args[])
+    {
+        new Denom().accept();
+    }
+}
+        
+        
+        
